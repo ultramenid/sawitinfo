@@ -5,7 +5,7 @@
 @endsection --}}
 
 @section('content')
-    @include('partials.topbarPc')
+    @include('partials.topbarPC')
     @include('partials.topbarMobile')
 
     {{-- hero --}}
