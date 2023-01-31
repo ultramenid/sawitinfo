@@ -9,6 +9,9 @@
     .border-l-hero {
         border-left-width: 0.5px;
     }
+    .h-106 {
+        height: 30rem;
+    }
 }
 .bg-auriga-hijau{
     background-color: #01303c;
@@ -22,6 +25,10 @@
 
 .border-t-hero {
     border-top-width: 0.5px;
+}
+
+.bg-gray-sawit{
+    background-color: #F0F3F3;
 }
 
 .selection-bg ::selection {

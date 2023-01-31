@@ -3,6 +3,7 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\CmsPagesController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DetailController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\InthenewsController;
 use App\Http\Controllers\LoginController;
@@ -29,6 +30,7 @@ Route::redirect('/', '/en');
 // frontend
 Route::group(['prefix' => '{lang}'], function () {
     Route::get('/', [IndexController::class, 'index'])->name('index');
+    Route::get('/detail', [DetailController::class, 'index'])->name('detail');
     Route::get('/about', [AboutController::class, 'index'])->name('about');
 
 });

@@ -76,6 +76,7 @@
                             <option value="cases">analysis</option>
                             <option value="action">exposes</option>
                             <option value="alerta">cases</option>
+                            <option value="ngopini">ngopini</option>
                         </select>
                     </label>
                 </div>

@@ -11,7 +11,7 @@
     </div>
     <div class=" max-w-7xl  mx-auto flex w-full justify-between mt-3">
         <div class="text-white">
-            <a class="text-5xl  font-semibold">Sawit.Info</a>
+            <a href="{{ route('index', app()->getlocale() )}}" class="text-5xl  font-semibold">Sawit.Info</a>
         </div>
         <div class="space-x-6 flex justify-end items-center text-white">
 
