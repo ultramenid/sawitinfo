@@ -73,9 +73,7 @@
                     <label class="w-full"  >
                         <select wire:model='category' class=" mb-6 bg-gray-100 dark:bg-newgray-700 text-newgray-700 dark:text-gray-300 rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20">
                             <option value="">Category</option>
-                            <option value="cases">analysis</option>
-                            <option value="action">exposes</option>
-                            <option value="alerta">cases</option>
+                            <option value="analysis">analysis</option>
                             <option value="ngopini">ngopini</option>
                         </select>
                     </label>

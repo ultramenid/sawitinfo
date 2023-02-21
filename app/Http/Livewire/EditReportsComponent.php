@@ -14,7 +14,7 @@ class EditReportsComponent extends Component
 {
     use WithFileUploads;
     public $idReports;
-    public $uphoto, $photo, $tags = [], $tag, $publishdate, $isactive = 0, $titleID, $titleEN, $descID, $descEN;
+    public $uphoto, $photo, $tags = [], $tag, $publishdate, $isactive = 0, $titleID, $titleEN, $descID, $descEN, $fileID, $fileEN;
     public function mount($id){
         $data = DB::table('reports')->where('id', $id)->first();
         $this->idReports = $id;
@@ -25,6 +25,8 @@ class EditReportsComponent extends Component
         $this->titleEN = $data->titleEN;
         $this->descID = $data->descID;
         $this->descEN = $data->descEN;
+        $this->fileID = $data->fileID;
+        $this->fileEN = $data->fileEN;
         $this->uphoto = $data->img;
     }
     public function addTags(){
@@ -49,9 +51,31 @@ class EditReportsComponent extends Component
         $image->save('storage/files/photos/thumbnail/'.$foto);
         return $foto;
     }
+    public function uploadReports(){
+        if($this->fileID and $this->fileEN){
+            $name1 = $this->fileID;
+            $name2 = $this->fileEN;
+            return [$name1, $name2];
+        }else{
+            $file1 = $this->fileID->store('public/files/reports');
+            $file2 = $this->fileEN->store('public/files/reports');
+            $name1 = $this->fileID->getClientOriginalName();
+            $name2 = $this->fileEN->getClientOriginalName();
+
+            // $file1 = 1;
+            // $file2 = 2;
+
+            return [$name1, $name1];
+        }
+
+    }
+
+
 
     public function storePosts(){
         if($this->manualValidation()){
+
+
             if(!$this->photo){
                 $name = $this->uphoto;
             }else{
@@ -71,6 +95,8 @@ class EditReportsComponent extends Component
                     'descID' => $this->descID,
                     'titleEN' => $this->titleEN,
                     'titleID' => $this->titleID,
+                    'fileID' => $this->uploadReports()[0],
+                    'fileEN' => $this->uploadReports()[1],
                     'is_active' => $this->isactive,
                     'slug' => Str::slug($this->titleID,'-'),
                     'updated_at' => Carbon::now('Asia/Jakarta')
@@ -94,6 +120,16 @@ class EditReportsComponent extends Component
             return;
         }elseif($this->tags == []){
             $message = 'Tags is required';
+            $type = 'error'; //error, success
+            $this->emit('toast',$message, $type);
+            return;
+        }elseif($this->fileID == ''){
+            $message = 'File is required';
+            $type = 'error'; //error, success
+            $this->emit('toast',$message, $type);
+            return;
+        }elseif($this->fileEN == ''){
+            $message = 'File is required';
             $type = 'error'; //error, success
             $this->emit('toast',$message, $type);
             return;

@@ -113,6 +113,18 @@
                         <span x-html="count"></span> / <span  x-html="$refs.countme.maxLength"></span>
                       </div>
                 </div>
+                <div class="w-full border border-gray-300 dark:border-opacity-20 rounded px-6 py-6 mb-6">
+                    <h1 class="text-2xl font-semibold  text-newbg-newgray-900 dark:text-gray-300 mb-6">File</h1>
+                    <div class="flex items-center justify-center px-2 py-2 border border-dashed border-gray-400 rounded" x-data="{ isUploading: false, progress: 0 }" x-on:livewire-upload-start="isUploading = true" x-on:livewire-upload-finish="isUploading = false; progress = 5" x-on:livewire-upload-error="isUploading = false" x-on:livewire-upload-progress="progress = $event.detail.progress">
+
+                            <input type='file' class="" wire:model='fileEN' value="{{$fileEN}}" accept="application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,
+                            text/plain, application/pdf" />
+                            <div x-show.transition="isUploading" class="progress progress-sm mt-2 rounded flex justify-center">
+                                <span class="text-xs text-black dark:text-white" x-text="'Uploading ' + progress + '%'"></span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
             </div>
 
             {{-- tab indonesia --}}
@@ -130,6 +142,19 @@
                     <div class="flex justify-end text-newgray-700 dark:text-gray-500  italic text-xs">
                         <span x-html="count"></span> / <span  x-html="$refs.countme.maxLength"></span>
                       </div>
+                </div>
+
+                <div class="w-full border border-gray-300 dark:border-opacity-20 rounded px-6 py-6 mb-6">
+                    <h1 class="text-2xl font-semibold  text-newbg-newgray-900 dark:text-gray-300 mb-6">File</h1>
+                    <div class="flex items-center justify-center px-2 py-2 border border-dashed border-gray-400 rounded" x-data="{ isUploading: false, progress: 0 }" x-on:livewire-upload-start="isUploading = true" x-on:livewire-upload-finish="isUploading = false; progress = 5" x-on:livewire-upload-error="isUploading = false" x-on:livewire-upload-progress="progress = $event.detail.progress">
+
+                            <input type='file' value="{{$fileID}}" wire:model='fileID' accept="application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,
+                            text/plain, application/pdf" />
+                            <div x-show.transition="isUploading" class="progress progress-sm mt-2 rounded flex justify-center">
+                                <span class="text-xs text-black dark:text-white" x-text="'Uploading ' + progress + '%'"></span>
+                            </div>
+                        </label>
+                    </div>
                 </div>
             </div>
 

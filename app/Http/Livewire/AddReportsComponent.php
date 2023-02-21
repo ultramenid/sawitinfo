@@ -12,7 +12,7 @@ use Livewire\WithFileUploads;
 class AddReportsComponent extends Component
 {
     use WithFileUploads;
-    public $photo, $tags = [], $tag, $publishdate, $isactive = 0, $titleID, $titleEN, $descID, $descEN;
+    public $photo, $tags = [], $tag, $publishdate, $isactive = 0, $titleID, $titleEN, $descID, $descEN,$fileID, $fileEN;
 
     public function uploadImage(){
         $file = $this->photo->store('public/files/photos');
@@ -24,6 +24,17 @@ class AddReportsComponent extends Component
         $image = $manager->make('storage/files/photos/'.$foto)->fit(300, 150);
         $image->save('storage/files/photos/thumbnail/'.$foto);
         return $foto;
+    }
+
+    public function uploadReports(){
+        $file1 = $this->fileID->store('public/files/reports');
+        $file2 = $this->fileEN->store('public/files/reports');
+        $name1 = $this->fileID->getClientOriginalName();
+        $name2 = $this->fileEN->getClientOriginalName();
+        // $file1 = 1;
+        // $file2 = 2;
+
+        return [$name1, $name2];
     }
 
     public function addTags(){
@@ -47,6 +58,8 @@ class AddReportsComponent extends Component
                 'titleEN' => $this->titleEN,
                 'descID' => $this->titleID,
                 'descEN' => $this->titleEN,
+                'fileID' => $this->uploadReports()[0],
+                'fileEN' => $this->uploadReports()[1],
                 'is_active' => $this->isactive,
                 'slug' => Str::slug($this->titleID,'-'),
                 'created_at' => Carbon::now('Asia/Jakarta')
@@ -77,6 +90,16 @@ class AddReportsComponent extends Component
             return;
         }elseif($this->tags == []){
             $message = 'Tags is required';
+            $type = 'error'; //error, success
+            $this->emit('toast',$message, $type);
+            return;
+        }elseif($this->fileID == ''){
+            $message = 'File is required';
+            $type = 'error'; //error, success
+            $this->emit('toast',$message, $type);
+            return;
+        }elseif($this->fileEN == ''){
+            $message = 'File is required';
             $type = 'error'; //error, success
             $this->emit('toast',$message, $type);
             return;

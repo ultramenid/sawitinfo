@@ -25,9 +25,6 @@
             <div class="py-2 hover:border-b hover:border-white">
                 <a href="#" class="font-semibold text-xl">story</a>
             </div>
-            <div class="py-2 hover:border-b hover:border-white">
-                <a href="#" class="font-semibold text-xl">resources</a>
-            </div>
             <div @click.away="open = false" class="relative py-2" x-data="{ open: false }">
                 <button @click="open = !open" class="flex flex-row items-center w-full ">
                     <a  class="font-semibold text-xl">{{__('resources')}}</a>

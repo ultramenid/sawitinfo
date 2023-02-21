@@ -12,16 +12,21 @@
     <div class="max-w-6xl mx-auto grid md:grid-cols-2 grid-cols-1 sm:py-8 gap-10 ">
         {{-- left side --}}
         <div class="w-full">
-            <img src="{{ asset('img/sawit.jpeg') }}" alt="sawit.info" class="h-72 object-cover sm:px-4 px-0">
+            <img src="{{ asset('storage/files/photos/'.$posts[0]->img) }}" alt="sawit.info" class="w-full object-center h-80 object-cover sm:px-4 px-0">
 
             <div class="text-gray-500 space-x-6 flex sm:mt-6 mt-2 px-4">
-                <h1 class="font-semibold md:text-3xl text-md">article</h1>
+                <h1 class="font-semibold md:text-3xl text-md">{{$posts[0]->category}}</h1>
                 <span class="font-semibold md:text-3xl text-md">•</span>
-                <h1 class="font-semibold md:text-3xl text-md">1 desember 2022</h1>
+                <h1 class="font-semibold md:text-3xl text-md">
+                    @php
+                        $date = \Carbon\Carbon::parse($posts[0]->publishdate)->locale(App::getLocale());
+                        $date->settings(['formatFunction' => 'translatedFormat']);
+                        echo $date->format('d F Y');
+                    @endphp</h1>
             </div>
 
-            <h1 class="px-4 sm:mt-6 mt-2 sm:mb-8 mb-3 md:text-5xl text-2xl font-semibold text-auriga-biru">Duet ekowisata menjaga hutan Pegunungan Arfak Arfak Arfak aa</h1>
-            <a class="px-4 text-auriga-biru sm:text-xl text-base font-semibold hover:cursor-pointer hover:underline">READ THE ARTICLE</a>
+            <h1 class="px-4 sm:mt-6 mt-2 sm:mb-8 mb-3 md:text-5xl text-2xl font-semibold text-auriga-biru">{{$posts[0]->title}}</h1>
+            <a class="px-4 text-auriga-biru sm:text-xl text-base font-semibold hover:cursor-pointer hover:underline ">READ THE ARTICLE</a>
         </div>
 
         {{-- right side --}}
@@ -31,13 +36,20 @@
                 {{-- card --}}
                 <div class="py-2">
                     <div class="text-gray-500 space-x-4 flex  ">
-                        <h1 class="font-semibold text-sm">article</h1>
+                        <h1 class="font-semibold text-sm">{{$posts[0]->category}}</h1>
                         <span class="font-semibold text-sm">•</span>
-                        <h1 class="font-semibold text-sm">1 desember 2022</h1>
+                        <h1 class="font-semibold text-sm">
+                            @php
+                                $date = \Carbon\Carbon::parse($posts[0]->publishdate)->locale(App::getLocale());
+                                $date->settings(['formatFunction' => 'translatedFormat']);
+                                echo $date->format('d F Y');
+                            @endphp
+                        </h1>
+                        </h1>
                     </div>
                     <div class="flex  w-full justify-between mt-1 space-x-6  ">
-                        <img src="{{ asset('img/sawit.jpeg') }}" alt="sawit.info" class="md:w-5/12 w-6/12 sm:h-full h-24 object-cover">
-                        <a class="text-auriga-biru sm:text-xl text-base font-bold">Duet ekowisata menjaga hutan Pegunungan Arfak Arfak Arfak aa</a>
+                        <img src="{{ asset('storage/files/photos/thumbnail/'.$posts[0]->img) }}" alt="sawit.info" class="md:w-5/12 w-6/12 sm:h-28 h-24 object-cover">
+                        <a class="text-auriga-biru sm:text-xl text-base font-bold">{{$posts[0]->title}}</a>
                     </div>
                     <div class="flex justify-end mt-4">
                         <a href="#" class="text-auriga-biru font-bold sm:text-base text-sm">READ THE ARTICLE</a>
@@ -47,13 +59,20 @@
                 {{-- card --}}
                 <div class="py-2 border-t-hero">
                     <div class="text-gray-500 space-x-4 flex  ">
-                        <h1 class="font-semibold text-sm">article</h1>
+                        <h1 class="font-semibold text-sm">{{$posts[0]->category}}</h1>
                         <span class="font-semibold text-sm">•</span>
-                        <h1 class="font-semibold text-sm">1 desember 2022</h1>
+                        <h1 class="font-semibold text-sm">
+                            @php
+                                $date = \Carbon\Carbon::parse($posts[0]->publishdate)->locale(App::getLocale());
+                                $date->settings(['formatFunction' => 'translatedFormat']);
+                                echo $date->format('d F Y');
+                            @endphp
+                        </h1>
+                        </h1>
                     </div>
                     <div class="flex  w-full justify-between mt-1 space-x-6  ">
-                        <img src="{{ asset('img/sawit.jpeg') }}" alt="sawit.info" class="md:w-5/12 w-6/12 sm:h-full h-24 object-cover">
-                        <a class="text-auriga-biru sm:text-xl text-base font-bold">Duet ekowisata menjaga hutan Pegunungan Arfak Arfak Arfak aa</a>
+                        <img src="{{ asset('storage/files/photos/thumbnail/'.$posts[0]->img) }}" alt="sawit.info" class="md:w-5/12 w-6/12 sm:h-28 h-24 object-cover">
+                        <a class="text-auriga-biru sm:text-xl text-base font-bold">{{$posts[0]->title}}</a>
                     </div>
                     <div class="flex justify-end mt-4">
                         <a href="#" class="text-auriga-biru font-bold sm:text-base text-sm">READ THE ARTICLE</a>
@@ -63,13 +82,20 @@
                 {{-- card --}}
                 <div class="py-2 border-t-hero">
                     <div class="text-gray-500 space-x-4 flex  ">
-                        <h1 class="font-semibold text-sm">article</h1>
+                        <h1 class="font-semibold text-sm">{{$posts[0]->category}}</h1>
                         <span class="font-semibold text-sm">•</span>
-                        <h1 class="font-semibold text-sm">1 desember 2022</h1>
+                        <h1 class="font-semibold text-sm">
+                            @php
+                                $date = \Carbon\Carbon::parse($posts[0]->publishdate)->locale(App::getLocale());
+                                $date->settings(['formatFunction' => 'translatedFormat']);
+                                echo $date->format('d F Y');
+                            @endphp
+                        </h1>
+                        </h1>
                     </div>
                     <div class="flex  w-full justify-between mt-1 space-x-6  ">
-                        <img src="{{ asset('img/sawit.jpeg') }}" alt="sawit.info" class="md:w-5/12 w-6/12 sm:h-full h-24 object-cover">
-                        <a class="text-auriga-biru sm:text-xl text-base font-bold">Duet ekowisata menjaga hutan Pegunungan Arfak Arfak Arfak aa</a>
+                        <img src="{{ asset('storage/files/photos/thumbnail/'.$posts[0]->img) }}" alt="sawit.info" class="md:w-5/12 w-6/12 sm:h-28 h-24 object-cover">
+                        <a class="text-auriga-biru sm:text-xl text-base font-bold">{{$posts[0]->title}}</a>
                     </div>
                     <div class="flex justify-end mt-4">
                         <a href="#" class="text-auriga-biru font-bold sm:text-base text-sm">READ THE ARTICLE</a>
@@ -92,9 +118,9 @@
 
     {{-- ngopini --}}
     <div class="bg-auriga-hijau sm:py-20 py-6 relative mt-12 mb-12  px-4">
-        <div class=" max-w-6xl mx-auto grid sm:grid-cols-2 grid-cols-1 sm:gap-10 gap-0 z-20">
-            <div>
-                <img src="{{ asset('img/higlight.jpg') }}" alt="" class="w-higlight sm:h-96 h-60 w-full object-cover">
+        <div class=" max-w-6xl mx-auto grid sm:grid-cols-2 grid-cols-1 sm:gap-10 gap-0 ">
+            <div class="z-40">
+                <img src="{{ asset('storage/files/photos/'.$ngopinis[0]->img) }}" alt="" class="w-higlight sm:h-96 h-60 w-full object-cover">
             </div>
             <div class="sm:px-10">
                 <div class="flex space-x-4 sm:mt-10 mt-5 items-center text-gray-200">
@@ -102,20 +128,22 @@
                     <span class="font-semibold sm:text-xl text-sm">•</span>
                     <h1 class="font-semibold sm:text-xl text-sm">sawit</h1>
                 </div>
-                <h1 class="sm:mt-10 mt-5 sm:text-3xl text-xl font-bold text-white">Judul artikel maksimal 70
-                    karakter termasuk spasi
-                    di sini jadi 3 baris
+                <h1 class="sm:mt-10 mt-5 sm:text-3xl text-xl font-bold text-white">
+                    {{$ngopinis[0]->title}}
                 </h1>
                 <div class="sm:mt-10 mt-5 text-white">
-                    <a class="font-bold">NOVEMBER 2022</a><span> | </span><a>Xerundistius ipsum nulpa
-                        destibus de omnihit volupist, si dipitempore,
-                        quiaerum quibus. Harciatur aborit fugiatusdae
-                        num reptatur</a>
+                    <a class="font-bold">
+                    @php
+                        $date = \Carbon\Carbon::parse($ngopinis[0]->publishdate)->locale(App::getLocale());
+                        $date->settings(['formatFunction' => 'translatedFormat']);
+                        echo $date->format('d F Y');
+                    @endphp
+                    </a><span> | </span><a>{{$ngopinis[0]->description}}</a>
                 </div>
             </div>
         </div>
         <div class="absolute z-10  bottom-0 left-0   text-white w-3/12">
-            <img src="{{ asset('img/elemen-light.png') }}" alt="auriga nusantara" class="">
+            <img src="{{ asset('img/elemen-light.png') }}" alt="auriga nusantara" class="z-10">
         </div>
     </div>
     <div class="max-w-6xl mb-12 mx-auto bg-auriga-biru flex w-full justify-between px-6 py-4">
@@ -132,62 +160,36 @@
         <div class="max-w-6xl mx-auto px-4">
             <div class=" grid md:grid-cols-2 grid-cols-1 md:gap-10 gap-36 sm:mt-32 mt-24">
 
+                @foreach ($reports as $item)
                 <!-- card -->
-                <div class=" md:px-12 bg-white py-6 ">
-                        <div class="card">
-                            <div class="card-header flex justify-center mx-4 -mt-24">
-                                <img
-                                    class="w-96 md:h-80 h-60 object-cover"
-                                    src="https://images.unsplash.com/photo-1540553016722-983e48a2cd10?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80"
-                                    alt="tailwind-card-image"
-                                />
-                            </div>
-                            <div class="card-body  md:w-96 w-full px-7">
-                                <div class="flex space-x-4 mt-6  items-center text-gray-500">
-                                    <h1 class="font-semibold md:text-xl text-md">report</h1>
-                                </div>
-                                <h1 class="mt-6 md:text-2xl text-xl font-bold  text-auriga-biru">Judul artikel maksimal 70
-                                    karakter termasuk spasi
-                                    di sini jadi 3 baris
-                                </h1>
-                                <div class="mt-6  text-auriga-biru">
-                                    <a class="font-bold">NOVEMBER 2022</a><span> | </span><a>Xerundistius ipsum nulpa
-                                        destibus de omnihit volupist, si dipitempore,
-                                        quiaerum quibus. Harciatur aborit fugiatusdae
-                                        num reptatur</a>
-                                </div>
-                            </div>
-                        </div>
-                </div>
-
-                <!-- card -->
-                <div class="relative md:px-12 bg-white py-6 col-span-1 gap-10">
-                    <div class="card ">
+                    <div class="card md:px-12 bg-white py-6 grid">
                         <div class="card-header flex justify-center mx-4 -mt-24">
                             <img
-                                class="w-96 md:h-80 h-60 object-cover"
-                                src="https://images.unsplash.com/photo-1540553016722-983e48a2cd10?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80"
+                                class="h-96 object-center object-cover"
+                                src="{{ asset('storage/files/photos/'.$item->img) }}"
                                 alt="tailwind-card-image"
                             />
                         </div>
-                        <div class="card-body md:w-96 w-full px-7">
-                            <div class="flex space-x-4 mt-6 items-center text-gray-500">
+                        <div class="card-body  md:w-96 w-full px-7">
+                            <div class="flex space-x-4 mt-6  items-center text-gray-500">
                                 <h1 class="font-semibold md:text-xl text-md">report</h1>
                             </div>
-                            <h1 class="mt-6 sm:text-2xl text-xl font-bold  text-auriga-biru">Judul artikel maksimal 70
-                                karakter termasuk spasi
-                                di sini jadi 3 baris
+                            <h1 class="mt-6 md:text-2xl text-xl font-bold  text-auriga-biru">
+                                {{$item->title}}
                             </h1>
                             <div class="mt-6  text-auriga-biru">
-                                <a class="font-bold">NOVEMBER 2022</a><span> | </span><a>Xerundistius ipsum nulpa
-                                    destibus de omnihit volupist, si dipitempore,
-                                    quiaerum quibus. Harciatur aborit fugiatusdae
-                                    num reptatur</a>
+                                <a class="font-bold">
+                                    @php
+                                        $date = \Carbon\Carbon::parse($item->publishdate)->locale(App::getLocale());
+                                        $date->settings(['formatFunction' => 'translatedFormat']);
+                                        echo $date->format('d F Y');
+                                    @endphp
+                                </a><span> | </span><a>{{$item->description}}</a>
                             </div>
-
                         </div>
                     </div>
-                </div>
+                @endforeach
+
                 <div class="flex space-x-4 items-center sm:-mt-0 -mt-52">
                     <h1 class="font-semibold text-xl">VIEW ALL REPORT</h1>
                     <div class="rounded-full  border-black border md:flex justify-center items-center px-1 py-1 ">
@@ -207,50 +209,29 @@
                 Sawit in the news
             </h1>
             <div class=" grid md:grid-cols-3 grid-cols-1 sm:gap-20 gap-10 mt-8">
-                {{-- card --}}
-                <div>
-                    <h1 class="text-gray-400 font-semibold sm:mb-6 mb-1">
-                        NOVEMBER 2022
-                    </h1>
-                    <a class="font-semibold text-3xl">Judul artikel maksimal 70 karakter termasuk spasi di sini jadi 4 baris</a>
-                    <p class="text-gray-600 sm:mt-6 mt-2">Xerundistius ipsum nulpa destibus de omnihit volupist, si dipitempore, quiaerum quibus. Harciatur aborit fugiatusdae num reptatur</p>
-                    <div class="flex space-x-2 sm:mt-8 mt-4 items-center">
-                        <a class="text-red-600 text-sm font-bold">TEMPO MAGAZINE</a>
-                        <svg xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke-width="4" stroke="currentColor" class="w-3 h-3 font-bold text-red-600">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                          </svg>
+                @foreach ($inthenews as $item)
+                    {{-- card --}}
+                    <div class="grid">
+                        <h1 class="text-gray-400 font-semibold mb-2 ">
+                            @php
+                                $date = \Carbon\Carbon::parse($item->publishdate)->locale(App::getLocale());
+                                $date->settings(['formatFunction' => 'translatedFormat']);
+                                echo $date->format('d F Y');
+                            @endphp
+                        </h1>
+                        <a class="font-semibold text-3xl">{{$item->title}}</a>
+                        <p class="text-gray-600 sm:mt-6 mt-2">{{$item->description}}</p>
+                        <div class="flex space-x-2 sm:mt-8 mt-4 items-center">
+                            <a class="text-red-600 text-sm font-bold">TEMPO MAGAZINE</a>
+                            <svg xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke-width="4" stroke="currentColor" class="w-3 h-3 font-bold text-red-600">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                            </svg>
+                        </div>
                     </div>
-                </div>
+                @endforeach
 
-                {{-- card --}}
-                <div>
-                    <h1 class="text-gray-400 font-semibold sm:mb-6 mb-1">
-                        NOVEMBER 2022
-                    </h1>
-                    <a class="font-semibold text-3xl">Judul artikel maksimal 70 karakter termasuk spasi di sini jadi 4 baris</a>
-                    <p class="text-gray-600 sm:mt-6 mt-2">Xerundistius ipsum nulpa destibus de omnihit volupist, si dipitempore, quiaerum quibus. Harciatur aborit fugiatusdae num reptatur</p>
-                    <div class="flex space-x-2 sm:mt-8 mt-4 items-center">
-                        <a class="text-red-600 text-sm font-bold">CNN</a>
-                        <svg xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke-width="4" stroke="currentColor" class="w-3 h-3 font-bold text-red-600">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                          </svg>
-                    </div>
-                </div>
 
-                {{-- card --}}
-                <div>
-                    <h1 class="text-gray-400 font-semibold sm:mb-6 mb-1">
-                        NOVEMBER 2022
-                    </h1>
-                    <a class="font-semibold text-3xl">Judul artikel maksimal 70 karakter termasuk spasi di sini jadi 4 baris</a>
-                    <p class="text-gray-600 sm:mt-6 mt-2">Xerundistius ipsum nulpa destibus de omnihit volupist, si dipitempore, quiaerum quibus. Harciatur aborit fugiatusdae num reptatur</p>
-                    <div class="flex space-x-2 sm:mt-8 mt-4 items-center">
-                        <a class="text-red-600 text-sm font-bold">TIMES MAGAZINE</a>
-                        <svg xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke-width="4" stroke="currentColor" class="w-3 h-3 font-bold text-red-600">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                          </svg>
-                    </div>
-                </div>
+
 
             </div>
             <div class="flex space-x-4 items-center mt-24">
