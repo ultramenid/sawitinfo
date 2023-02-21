@@ -118,21 +118,21 @@
 
     {{-- ngopini --}}
     <div class="bg-auriga-hijau sm:py-20 py-6 relative mt-12 mb-12  px-4">
-        <div class=" max-w-6xl mx-auto grid sm:grid-cols-2 grid-cols-1 sm:gap-10 gap-0 ">
+        <div class=" max-w-6xl mx-auto grid sm:grid-cols-2 grid-cols-1 sm:gap- gap-0 ">
             <div class="z-40">
-                <img src="{{ asset('storage/files/photos/'.$ngopinis[0]->img) }}" alt="" class="w-higlight sm:h-96 h-60 w-full object-cover">
+                <img src="{{ asset('storage/files/photos/'.$ngopinis[0]->img) }}" alt="" class=" sm:h-80 h-60 w-full object-cover">
             </div>
             <div class="sm:px-10">
-                <div class="flex space-x-4 sm:mt-10 mt-5 items-center text-gray-200">
-                    <h1 class="font-semibold sm:text-xl text-sm">ngopini</h1>
-                    <span class="font-semibold sm:text-xl text-sm">•</span>
-                    <h1 class="font-semibold sm:text-xl text-sm">sawit</h1>
+                <div class="flex space-x-4 sm:mt-10 mt-4 items-center text-gray-200">
+                    <h1 class="font-semibold sm:text-base text-sm">ngopini</h1>
+                    <span class="font-semibold sm:text-base text-sm">•</span>
+                    <h1 class="font-semibold sm:text-base text-sm">sawit</h1>
                 </div>
-                <h1 class="sm:mt-10 mt-5 sm:text-3xl text-xl font-bold text-white">
+                <h1 class="sm:mt-8 mt-5 sm:text-2xl text-xl font-bold text-white">
                     {{$ngopinis[0]->title}}
                 </h1>
                 <div class="sm:mt-10 mt-5 text-white">
-                    <a class="font-bold">
+                    <a class="font-semibold text-sm">
                     @php
                         $date = \Carbon\Carbon::parse($ngopinis[0]->publishdate)->locale(App::getLocale());
                         $date->settings(['formatFunction' => 'translatedFormat']);
