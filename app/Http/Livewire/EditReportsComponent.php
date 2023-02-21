@@ -13,7 +13,7 @@ use Livewire\WithFileUploads;
 class EditReportsComponent extends Component
 {
     use WithFileUploads;
-    public $idReports;
+    public $idReports, $filenameID, $filenameEN;
     public $uphoto, $photo, $tags = [], $tag, $publishdate, $isactive = 0, $titleID, $titleEN, $descID, $descEN, $fileID, $fileEN;
     public function mount($id){
         $data = DB::table('reports')->where('id', $id)->first();
@@ -27,6 +27,8 @@ class EditReportsComponent extends Component
         $this->descEN = $data->descEN;
         $this->fileID = $data->fileID;
         $this->fileEN = $data->fileEN;
+        $this->filenameID = $data->fileID;
+        $this->filenameEN = $data->fileEN;
         $this->uphoto = $data->img;
     }
     public function addTags(){
@@ -51,21 +53,26 @@ class EditReportsComponent extends Component
         $image->save('storage/files/photos/thumbnail/'.$foto);
         return $foto;
     }
+
+    public function updatedFileID(){
+       $this->filenameID = $this->fileID->getClientOriginalName();
+    }
+    public function updatedFileEN(){
+        $this->filenameEN = $this->fileEN->getClientOriginalName();
+     }
     public function uploadReports(){
-        if($this->fileID and $this->fileEN){
-            $name1 = $this->fileID;
-            $name2 = $this->fileEN;
-            return [$name1, $name2];
-        }else{
+            if($this->fileID and $this->fileEN){
+                $name1 = $this->fileID;
+                $name2 = $this->fileEN;
+
+                return [$name1, $name2];
+            }else{
             $file1 = $this->fileID->store('public/files/reports');
             $file2 = $this->fileEN->store('public/files/reports');
             $name1 = $this->fileID->getClientOriginalName();
             $name2 = $this->fileEN->getClientOriginalName();
 
-            // $file1 = 1;
-            // $file2 = 2;
-
-            return [$name1, $name1];
+            return [$name1, $name2];
         }
 
     }
