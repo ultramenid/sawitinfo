@@ -100,8 +100,8 @@ class AddPostsComponent extends Component
             $type = 'error'; //error, success
             $this->emit('toast',$message, $type);
             return;
-        }elseif(strlen($this->descID) > 155 ){
-            $message = 'Description Indonesia max limit 120 character';
+        }elseif(strlen($this->descID) > 160 ){
+            $message = 'Description Indonesia max limit 160 character';
             $type = 'error'; //error, success
             $this->emit('toast',$message, $type);
             return;
@@ -110,8 +110,8 @@ class AddPostsComponent extends Component
             $type = 'error'; //error, success
             $this->emit('toast',$message, $type);
             return;
-        }elseif(strlen($this->descEN) > 155 ){
-            $message = 'Description english max limit 120 character';
+        }elseif(strlen($this->descEN) > 160 ){
+            $message = 'Description english max limit 160 character';
             $type = 'error'; //error, success
             $this->emit('toast',$message, $type);
             return;
