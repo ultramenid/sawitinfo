@@ -37,10 +37,6 @@
                     <a href="#"  class="mb-4 px-4 inline-block  leading-5 text-white text-xl font-semibold ">{{__('story')}}<a>
                     <p class="border-b border-gray-300"></p>
                 </div>
-                <div class=" px-6">
-                    <a href="#"  class="mb-4 px-4 inline-block  leading-5 text-white text-xl font-semibold ">{{__('resources')}}<a>
-                    <p class="border-b border-gray-300"></p>
-                </div>
                 <div class=" px-6" x-data="{open1: false}">
                     <div class="flex items-center py-1   px-4 mb-2" @click=" open1 =! open1">
                         <a class=" leading-5 text-white text-xl font-semibold ">{{__('resources')}} </a>
