@@ -10,12 +10,9 @@ class CmsReportsComponent extends Component
 {
     use WithPagination;
     public $deleteName, $deleteID, $deleter;
-    public $dataField = 'titleID', $dataOrder = 'desc', $paginate = 10, $search = '';
+    public  $paginate = 10, $search = '';
 
-    public function sortingField($field){
-        $this->dataField = $field;
-        $this->dataOrder = $this->dataOrder == 'asc' ? 'desc' : 'asc';
-    }
+
 
     public function closeDelete(){
         $this->deleter = false;
@@ -48,7 +45,7 @@ class CmsReportsComponent extends Component
             return  DB::table('reports')
                         ->select('id', 'titleID', 'img', 'is_active')
                         ->where('titleID', 'like', $sc)
-                        ->orderBy($this->dataField, $this->dataOrder)
+                        ->orderByDesc('publishdate')
                         ->paginate($this->paginate);
         } catch (\Throwable $th) {
             return [];

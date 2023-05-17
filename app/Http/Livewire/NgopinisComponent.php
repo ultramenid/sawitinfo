@@ -20,6 +20,7 @@ class NgopinisComponent extends Component
     public function getPosts(){
         return DB::table('posts')->selectRaw($this->selectPosts())
         ->where('category', 'ngopini')
+        ->orderByDesc('publishdate')
         ->paginate(6);
     }
     public function render(){

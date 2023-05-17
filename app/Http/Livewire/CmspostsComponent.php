@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -10,20 +11,16 @@ class CmspostsComponent extends Component
 {
     use WithPagination;
     public $deleteName, $deleteID, $deleter;
-    public $dataField = 'titleID', $dataOrder = 'desc', $paginate = 10, $search = '';
+    public  $paginate = 10, $search = '';
 
-    public function sortingField($field){
-        $this->dataField = $field;
-        $this->dataOrder = $this->dataOrder == 'asc' ? 'desc' : 'asc';
-    }
 
     public function getPosts(){
         $sc = '%' . $this->search . '%';
         try {
             return  DB::table('posts')
-                        ->select('id', 'titleID', 'category', 'img', 'is_active')
+                        ->select('id', 'titleID', 'category', 'img', 'is_active', 'publishdate')
                         ->where('titleID', 'like', $sc)
-                        ->orderBy($this->dataField, $this->dataOrder)
+                        ->orderByDesc('publishdate')
                         ->paginate($this->paginate);
         } catch (\Throwable $th) {
             return [];

@@ -20,6 +20,7 @@ class PagePostsComponent extends Component
     public function getPosts(){
         return DB::table('posts')->selectRaw($this->selectPosts())
         ->whereIn('category', ['analysis', 'cases', 'expose'])
+        ->orderByDesc('publishdate')
         ->paginate(6);
     }
     public function render(){
