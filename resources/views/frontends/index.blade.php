@@ -87,7 +87,7 @@
                     <span class="font-semibold sm:text-base text-sm">•</span>
                     <h1 class="font-semibold sm:text-base text-sm">sawit</h1>
                 </div>
-                <a href="{{ route('slug', [app()->getLocale(),  $ngopinis->slug]) }}">
+                <a href="{{ route('ngopini', [app()->getLocale(),  $ngopinis->slug]) }}">
                     <h1 class="sm:mt-8 mt-5 sm:text-2xl text-xl font-bold text-white">
                         {{$ngopinis->title}}
                     </h1>

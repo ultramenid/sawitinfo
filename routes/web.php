@@ -7,6 +7,7 @@ use App\Http\Controllers\DetailController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\InthenewsController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\NgopinisController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\SettingsController;
@@ -33,7 +34,9 @@ Route::group(['prefix' => '{lang}'], function () {
     Route::get('/detail', [DetailController::class, 'index'])->name('detail');
     Route::get('/about', [AboutController::class, 'index'])->name('about');
     Route::get('/posts/{slug}', [PostsController::class, 'slug'])->name('slug');
+    Route::get('/ngopini/{slug}', [NgopinisController::class, 'index'])->name('ngopini');
     Route::get('/posts', [PostsController::class, 'posts'])->name('posts');
+    Route::get('/ngopini', [NgopinisController::class, 'ngopinis'])->name('ngopinis');
 
 });
 
