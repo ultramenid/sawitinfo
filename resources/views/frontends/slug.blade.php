@@ -42,13 +42,20 @@
             </div>
             <div class="max-w-5xl mx-auto sm:px-0 px-4">
                 <h1 class="text-auriga-biru font-bold sm:text-5xl text-3xl max-w-xl sm:mb-12 mb-4">{{$data->title}}</h1>
-                <h5 class="text-sm font-light text-gray-600">
-                    @php
-                        $date = \Carbon\Carbon::parse($data->publishdate)->locale(App::getLocale());
-                        $date->settings(['formatFunction' => 'translatedFormat']);
-                        echo $date->format('F Y');
-                    @endphp
-                </h5>
+                <div class="flex space-x-4 items-center">
+                    <a class="text-auriga-biru text-xl">{{$data->category}}</a>
+                    <a> - </a>
+
+                    <h5 class="text-sm font-light text-gray-600">
+                        @php
+                            $date = \Carbon\Carbon::parse($data->publishdate)->locale(App::getLocale());
+                            $date->settings(['formatFunction' => 'translatedFormat']);
+                            echo $date->format('F Y');
+                        @endphp
+                    </h5>
+
+                </div>
+
 
             </div>
         </div>
