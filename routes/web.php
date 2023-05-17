@@ -41,7 +41,7 @@ Route::group(['middleware' => 'checkSession'], function () {
     Route::get('/cms/settings', [SettingsController::class, 'index']);
     Route::get('/cms/posts', [PostsController::class, 'index']);
     Route::get('/cms/addposts', [PostsController::class, 'add']);
-    Route::get('/cms/posts/{id}', [PostsController::class, 'edit']);
+    Route::get('/cms/editposts/{id}', [PostsController::class, 'edit']);
     Route::get('/cms/pages/whoweare', [CmsPagesController::class, 'whoweare']);
     Route::get('/cms/pages/sawitinfo', [CmsPagesController::class, 'sawitinfo']);
     Route::get('/cms/inthenews', [InthenewsController::class, 'index']);
