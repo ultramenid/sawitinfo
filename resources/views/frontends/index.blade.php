@@ -185,7 +185,7 @@
                         <a class="font-semibold text-3xl">{{$item->title}}</a>
                         <p class="text-gray-600 sm:mt-6 mt-2">{{$item->description}}</p>
                         <div class="flex space-x-2 sm:mt-8 mt-4 items-center">
-                            <a class="text-red-600 text-sm font-bold">TEMPO MAGAZINE</a>
+                            <a href="{{$item->sourceurl}}" target="_blank" class="text-red-600 text-sm font-bold uppercase">{{$item->sourcename}}</a>
                             <svg xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke-width="4" stroke="currentColor" class="w-3 h-3 font-bold text-red-600">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                             </svg>
