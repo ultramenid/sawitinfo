@@ -17,14 +17,6 @@
     @stack('scripts')
 
 
-    <script>
-        Livewire.on('gotoTop', () => {
-            window.scrollTo({
-                top: 0,
-                left: 0,
-                behaviour: 'smooth'
-            })
-        })
-    </script>
+    <script> Livewire.on('$refresh', () => { window.scrollTo({ top: 15, left: 15, behaviour: 'smooth' }) }) </script>
 </body>
 </html>
