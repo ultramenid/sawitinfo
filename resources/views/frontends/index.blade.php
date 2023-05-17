@@ -34,40 +34,15 @@
             <div class="md:px-10">
                 <h1 class="font-black text-auriga-biru text-4xl mb-2">Featured</h1>
                 {{-- card --}}
-                @if ($posts[1])
-                <div class="py-2">
-                    <div class="text-gray-500 space-x-4 flex  ">
-                       <h1 class="font-semibold text-sm">{{$posts[1]->category}}</h1>
-                        <span class="font-semibold text-sm">•</span>
-                        <h1 class="font-semibold text-sm">
-                            @php
-                                $date = \Carbon\Carbon::parse($posts[1]->publishdate)->locale(App::getLocale());
-                                $date->settings(['formatFunction' => 'translatedFormat']);
-                                echo $date->format('d F Y');
-                            @endphp
-                        </h1>
-                        </h1>
-                    </div>
-                    <div class="flex  w-full justify-between mt-1 space-x-6  ">
-                        <img src="{{ asset('storage/files/photos/thumbnail/'.$posts[1]->img) }}" alt="sawit.info" class="md:w-5/12 w-6/12 sm:h-28 h-24 object-cover">
-                        <a href="{{ route('slug', [app()->getLocale(),  $posts[1]->slug]) }}" class="text-auriga-biru sm:text-xl text-base font-bold">{{$posts[1]->title}}</a>
-                    </div>
-                    <div class="flex justify-end mt-4">
-                        <a href="#" class="text-auriga-biru font-bold sm:text-base text-sm">READ THE ARTICLE</a>
-                    </div>
-                </div>
-                @endif
-
-
-                {{-- card --}}
-                @if ($posts[2])
-                    <div class="py-2 border-t-hero">
+                @foreach($posts as $key => $data)
+                    @if($key > 0)
+                    <div class="py-2">
                         <div class="text-gray-500 space-x-4 flex  ">
-                            <h1 class="font-semibold text-sm">{{$posts[2]->category}}</h1>
+                        <h1 class="font-semibold text-sm">{{$data->category}}</h1>
                             <span class="font-semibold text-sm">•</span>
                             <h1 class="font-semibold text-sm">
                                 @php
-                                    $date = \Carbon\Carbon::parse($posts[2]->publishdate)->locale(App::getLocale());
+                                    $date = \Carbon\Carbon::parse($data->publishdate)->locale(App::getLocale());
                                     $date->settings(['formatFunction' => 'translatedFormat']);
                                     echo $date->format('d F Y');
                                 @endphp
@@ -75,43 +50,15 @@
                             </h1>
                         </div>
                         <div class="flex  w-full justify-between mt-1 space-x-6  ">
-                            <img src="{{ asset('storage/files/photos/thumbnail/'.$posts[2]->img) }}" alt="sawit.info" class="md:w-5/12 w-6/12 sm:h-28 h-24 object-cover">
-                            <a href="{{ route('slug', [app()->getLocale(),  $posts[2]->slug]) }}" class="text-auriga-biru sm:text-xl text-base font-bold">{{$posts[2]->title}}</a>
+                            <img src="{{ asset('storage/files/photos/thumbnail/'.$data->img) }}" alt="sawit.info" class="md:w-5/12 w-6/12 sm:h-28 h-24 object-cover">
+                            <a href="{{ route('slug', [app()->getLocale(),  $data->slug]) }}" class="text-auriga-biru sm:text-xl text-base font-bold">{{$posts[1]->title}}</a>
                         </div>
                         <div class="flex justify-end mt-4">
                             <a href="#" class="text-auriga-biru font-bold sm:text-base text-sm">READ THE ARTICLE</a>
                         </div>
                     </div>
-                @endif
-
-
-                {{-- card --}}
-                @if ($posts[3])
-                    <div class="py-2 border-t-hero">
-                        <div class="text-gray-500 space-x-4 flex  ">
-                            <h1 class="font-semibold text-sm">{{$posts[3]->category}}</h1>
-                            <span class="font-semibold text-sm">•</span>
-                            <h1 class="font-semibold text-sm">
-                                @php
-                                    $date = \Carbon\Carbon::parse($posts[3]->publishdate)->locale(App::getLocale());
-                                    $date->settings(['formatFunction' => 'translatedFormat']);
-                                    echo $date->format('d F Y');
-                                @endphp
-                            </h1>
-                            </h1>
-                        </div>
-                        <div class="flex  w-full justify-between mt-1 space-x-6  ">
-                            <img src="{{ asset('storage/files/photos/thumbnail/'.$posts[3]->img) }}" alt="sawit.info" class="md:w-5/12 w-6/12 sm:h-28 h-24 object-cover">
-                            <a href="{{ route('slug', [app()->getLocale(),  $posts[3]->slug]) }}" class="text-auriga-biru sm:text-xl text-base font-bold">{{$posts[3]->title}}</a>
-                        </div>
-                        <div class="flex justify-end mt-4">
-                            <a href="#" class="text-auriga-biru font-bold sm:text-base text-sm">READ THE ARTICLE</a>
-                        </div>
-                    </div>
-                @endif
-
-
-
+                    @endif
+                @endforeach
             </div>
         </div>
     </div>
