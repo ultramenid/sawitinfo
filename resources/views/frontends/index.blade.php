@@ -12,7 +12,7 @@
     <div class="max-w-6xl mx-auto grid md:grid-cols-2 grid-cols-1 sm:py-8 gap-10 ">
         {{-- left side --}}
         <div class="w-full">
-            <img src="{{ asset('storage/files/photos/'.$posts[0]->img) }}" alt="sawit.info" class="w-full object-center h-80 object-cover sm:px-4 px-0 border border-gray-100">
+            <img src="{{ asset('storage/files/photos/'.$posts[0]->img) }}" alt="sawit.info" class="w-full object-center h-80 object-cover sm:px-4 px-0 border border-gray-50">
 
             <div class="text-gray-500 space-x-6 flex sm:mt-6 mt-2 px-4">
                 <h1 class="font-semibold md:text-3xl text-md">{{$posts[0]->category}}</h1>
@@ -50,7 +50,7 @@
                             </h1>
                         </div>
                         <div class="flex  w-full justify-between mt-1 space-x-6  ">
-                            <img src="{{ asset('storage/files/photos/thumbnail/'.$data->img) }}" alt="sawit.info" class="md:w-5/12 w-6/12 sm:h-28 h-24 object-cover border border-gray-100">
+                            <img src="{{ asset('storage/files/photos/thumbnail/'.$data->img) }}" alt="sawit.info" class="md:w-5/12 w-6/12 sm:h-28 h-24 object-cover border border-gray-50">
                             <a href="{{ route('slug', [app()->getLocale(),  $data->slug]) }}" class="text-auriga-biru sm:text-xl text-base font-bold">{{$posts[1]->title}}</a>
                         </div>
                         <div class="flex justify-end mt-4">

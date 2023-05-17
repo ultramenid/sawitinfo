@@ -4,7 +4,7 @@
              <!-- card -->
         <div class="flex flex-col  text-auriga-biru">
             <img
-            class="md:w-106 w-full h-52 object-cover border border-gray-100"
+            class="md:w-106 w-full h-52 object-cover border border-gray-50"
             src="{{ asset('storage/files/photos/'.$item->img) }}"
             alt="">
             <div class="flex space-x-4 mt-3 items-center text-gray-500">
