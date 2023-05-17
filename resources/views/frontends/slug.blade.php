@@ -63,7 +63,7 @@
 
         <div class="max-w-5xl mx-auto flex sm:flex-row flex-col space-x-4 items-end sm:-mt-32 relative sm:px-0 px-4">
             <div class="sm:w-4/12 w-full sm:order-first order-last">
-                <a href="mailto:sawitinfo@auriga.or.id" class="font-semibold uppercase text-sm">contact: sawitinfo@auriga.or.id</a>
+                <a href="mailto:sawitinfo@auriga.or.id" class="font-semibold uppercase text-sm">contact: admin@sawit.info</a>
             </div>
             <img src="{{ asset('storage/files/photos/'.$data->img) }}" alt="" class=" sm:order-last order-first sm:w-8/12 w-full sm:h-96 h-64  object-cover object-center border border-gray-50">
         </div>

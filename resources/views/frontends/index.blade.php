@@ -79,7 +79,7 @@
     <div class="bg-auriga-hijau sm:py-20 py-6 relative mt-12 mb-12  px-4">
         <div class=" max-w-6xl mx-auto grid sm:grid-cols-2 grid-cols-1 sm:gap- gap-0 ">
             <div class="z-40">
-                <img src="{{ asset('storage/files/photos/'.$ngopinis[0]->img) }}" alt="" class=" sm:h-80 h-60 w-full object-cover">
+                <img src="{{ asset('storage/files/photos/'.$ngopinis->img) }}" alt="" class=" sm:h-80 h-60 w-full object-cover">
             </div>
             <div class="sm:px-10">
                 <div class="flex space-x-4 sm:mt-10 mt-4 items-center text-gray-200">
@@ -87,17 +87,19 @@
                     <span class="font-semibold sm:text-base text-sm">•</span>
                     <h1 class="font-semibold sm:text-base text-sm">sawit</h1>
                 </div>
-                <h1 class="sm:mt-8 mt-5 sm:text-2xl text-xl font-bold text-white">
-                    {{$ngopinis[0]->title}}
-                </h1>
+                <a href="{{ route('slug', [app()->getLocale(),  $ngopinis->slug]) }}">
+                    <h1 class="sm:mt-8 mt-5 sm:text-2xl text-xl font-bold text-white">
+                        {{$ngopinis->title}}
+                    </h1>
+                </a>
                 <div class="sm:mt-10 mt-5 text-white">
                     <a class="font-semibold text-sm">
                     @php
-                        $date = \Carbon\Carbon::parse($ngopinis[0]->publishdate)->locale(App::getLocale());
+                        $date = \Carbon\Carbon::parse($ngopinis->publishdate)->locale(App::getLocale());
                         $date->settings(['formatFunction' => 'translatedFormat']);
                         echo $date->format('d F Y');
                     @endphp
-                    </a><span> | </span><a>{{$ngopinis[0]->description}}</a>
+                    </a><span> | </span><a>{{$ngopinis->description}}</a>
                 </div>
             </div>
         </div>

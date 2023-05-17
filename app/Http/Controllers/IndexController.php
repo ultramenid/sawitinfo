@@ -60,8 +60,7 @@ class IndexController extends Controller
         ->where('publishdate', '<', Carbon::now('Asia/Jakarta'))
         ->where('is_active', 1)
         ->orderBy('publishdate','desc')
-        ->limit(1)
-        ->get();
+        ->first();
     }
 
     public function getReports(){
