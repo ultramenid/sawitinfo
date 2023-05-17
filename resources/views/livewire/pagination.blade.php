@@ -80,7 +80,11 @@
                                                 <span class="relative inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-white   bg-black  border-black  cursor-default leading-5">{{ $page }}</span>
                                             </span>
                                         @else
-                                            <button wire:loading.remove wire:click="gotoPage({{ $page }})" class="relative inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700  bg-white  border border-gray-300 leading-5 hover:text-gray-500 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150" aria-label="{{ __('Go to page :page', ['page' => $page]) }}">
+                                            <button @click="window.scrollTo({
+                                                top: 0,
+                                                left: 0,
+                                                behavior: 'smooth'
+                                              })" wire:loading.remove wire:click="gotoPage({{ $page }})" class="relative inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700  bg-white  border border-gray-300 leading-5 hover:text-gray-500 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150" aria-label="{{ __('Go to page :page', ['page' => $page]) }}">
                                                 {{ $page }}
                                             </button>
                                             <button wire:loading wire:target='gotoPage({{ $page }})' class="relative inline-flex items-center px-2 py-2 -ml-px text-sm font-medium  text-gray-700 bg-white border border-gray-300 leading-5 hover:text-gray-500 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150" aria-label="{{ __('Go to page :page', ['page' => $page]) }}">
