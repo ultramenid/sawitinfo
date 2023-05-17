@@ -5,9 +5,11 @@ namespace App\Http\Livewire;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class PagePostsComponent extends Component
 {
+    use WithPagination;
     public function selectPosts(){
         if(App::getLocale() == 'id'){
             return ('slug, titleID as title, descID as description, img, category, publishdate');
@@ -18,7 +20,7 @@ class PagePostsComponent extends Component
     public function getPosts(){
         return DB::table('posts')->selectRaw($this->selectPosts())
         ->whereIn('category', ['analysis', 'cases', 'expose'])
-        ->get();
+        ->paginate(6);
     }
     public function render(){
         $data = $this->getPosts();

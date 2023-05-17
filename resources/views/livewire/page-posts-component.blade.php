@@ -26,6 +26,9 @@
        </div>
         @endforeach
 
-
     </div>
+
+    @if ($data)
+            {{ $data->links('livewire.pagination') }}
+        @endif
 </div>
