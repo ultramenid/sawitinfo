@@ -33,13 +33,15 @@ Route::group(['prefix' => '{lang}'], function () {
     Route::get('/detail', [DetailController::class, 'index'])->name('detail');
     Route::get('/about', [AboutController::class, 'index'])->name('about');
     Route::get('/posts/{slug}', [PostsController::class, 'slug'])->name('slug');
+    Route::get('/posts', [PostsController::class, 'posts'])->name('posts');
+
 });
 
 //backend
 Route::group(['middleware' => 'checkSession'], function () {
     Route::get('/cms/dashboard', [DashboardController::class, 'index']);
     Route::get('/cms/settings', [SettingsController::class, 'index']);
-    Route::get('/cms/posts', [PostsController::class, 'index']);
+    Route::get('/cms/cmsposts', [PostsController::class, 'index']);
     Route::get('/cms/addposts', [PostsController::class, 'add']);
     Route::get('/cms/editposts/{id}', [PostsController::class, 'edit']);
     Route::get('/cms/pages/whoweare', [CmsPagesController::class, 'whoweare']);

@@ -14,6 +14,11 @@ class PostsController extends Controller
         return view('backends.cmscases', compact('title','nav'));
     }
 
+    public function posts(){
+        $title = 'Sawit - Posts';
+        return view('frontends.posts', compact('title'));
+    }
+
     public function add(){
         $title = 'New posts - Environmental Defender';
         $nav = 'posts';
