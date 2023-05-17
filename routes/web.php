@@ -32,7 +32,7 @@ Route::group(['prefix' => '{lang}'], function () {
     Route::get('/', [IndexController::class, 'index'])->name('index');
     Route::get('/detail', [DetailController::class, 'index'])->name('detail');
     Route::get('/about', [AboutController::class, 'index'])->name('about');
-
+    Route::get('/posts/{slug}', [PostsController::class, 'slug'])->name('slug');
 });
 
 //backend

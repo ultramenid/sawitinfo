@@ -25,7 +25,7 @@
                     @endphp</h1>
             </div>
 
-            <h1 class="px-4 sm:mt-6 mt-2 sm:mb-8 mb-3 md:text-5xl text-2xl font-semibold text-auriga-biru">{{$posts[0]->title}}</h1>
+            <a href="{{ route('slug', [app()->getLocale(),  $posts[0]->slug]) }}"><h1  class="px-4 sm:mt-6 mt-2 sm:mb-8 mb-3 md:text-5xl text-2xl font-semibold text-auriga-biru">{{$posts[0]->title}}</h1></a>
             <a class="px-4 text-auriga-biru sm:text-xl text-base font-semibold hover:cursor-pointer hover:underline ">READ THE ARTICLE</a>
         </div>
 
@@ -36,7 +36,7 @@
                 {{-- card --}}
                 <div class="py-2">
                     <div class="text-gray-500 space-x-4 flex  ">
-                        <h1 class="font-semibold text-sm">{{$posts[1]->category}}</h1>
+                       <h1 class="font-semibold text-sm">{{$posts[1]->category}}</h1>
                         <span class="font-semibold text-sm">•</span>
                         <h1 class="font-semibold text-sm">
                             @php
@@ -49,7 +49,7 @@
                     </div>
                     <div class="flex  w-full justify-between mt-1 space-x-6  ">
                         <img src="{{ asset('storage/files/photos/thumbnail/'.$posts[1]->img) }}" alt="sawit.info" class="md:w-5/12 w-6/12 sm:h-28 h-24 object-cover">
-                        <a class="text-auriga-biru sm:text-xl text-base font-bold">{{$posts[1]->title}}</a>
+                        <a href="{{ route('slug', [app()->getLocale(),  $posts[1]->slug]) }}" class="text-auriga-biru sm:text-xl text-base font-bold">{{$posts[1]->title}}</a>
                     </div>
                     <div class="flex justify-end mt-4">
                         <a href="#" class="text-auriga-biru font-bold sm:text-base text-sm">READ THE ARTICLE</a>
@@ -72,7 +72,7 @@
                     </div>
                     <div class="flex  w-full justify-between mt-1 space-x-6  ">
                         <img src="{{ asset('storage/files/photos/thumbnail/'.$posts[2]->img) }}" alt="sawit.info" class="md:w-5/12 w-6/12 sm:h-28 h-24 object-cover">
-                        <a class="text-auriga-biru sm:text-xl text-base font-bold">{{$posts[2]->title}}</a>
+                        <a href="{{ route('slug', [app()->getLocale(),  $posts[2]->slug]) }}" class="text-auriga-biru sm:text-xl text-base font-bold">{{$posts[2]->title}}</a>
                     </div>
                     <div class="flex justify-end mt-4">
                         <a href="#" class="text-auriga-biru font-bold sm:text-base text-sm">READ THE ARTICLE</a>
@@ -95,7 +95,7 @@
                     </div>
                     <div class="flex  w-full justify-between mt-1 space-x-6  ">
                         <img src="{{ asset('storage/files/photos/thumbnail/'.$posts[3]->img) }}" alt="sawit.info" class="md:w-5/12 w-6/12 sm:h-28 h-24 object-cover">
-                        <a class="text-auriga-biru sm:text-xl text-base font-bold">{{$posts[3]->title}}</a>
+                        <a href="{{ route('slug', [app()->getLocale(),  $posts[3]->slug]) }}" class="text-auriga-biru sm:text-xl text-base font-bold">{{$posts[3]->title}}</a>
                     </div>
                     <div class="flex justify-end mt-4">
                         <a href="#" class="text-auriga-biru font-bold sm:text-base text-sm">READ THE ARTICLE</a>
