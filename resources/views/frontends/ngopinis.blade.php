@@ -1,8 +1,8 @@
 @extends('layouts.indexLayout')
 
-{{-- @section('meta')
-    @include('partials.indexMeta')
-@endsection --}}
+@section('meta')
+    @include('partials.metaIndex')
+@endsection
 
 @section('content')
     @include('partials.topbarPC')

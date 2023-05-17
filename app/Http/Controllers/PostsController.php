@@ -16,7 +16,8 @@ class PostsController extends Controller
 
     public function posts(){
         $title = 'Sawit - Posts';
-        return view('frontends.posts', compact('title'));
+        $description = '';
+        return view('frontends.posts', compact('title', 'description'));
     }
 
     public function add(){

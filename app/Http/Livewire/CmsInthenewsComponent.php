@@ -8,12 +8,9 @@ use Livewire\Component;
 class CmsInthenewsComponent extends Component
 {
     public $deleteName, $deleteID, $deleter;
-    public $dataField = 'titleID', $dataOrder = 'desc', $paginate = 10, $search = '';
+    public  $paginate = 10, $search = '';
 
-    public function sortingField($field){
-        $this->dataField = $field;
-        $this->dataOrder = $this->dataOrder == 'asc' ? 'desc' : 'asc';
-    }
+
 
     public function getNews(){
         $sc = '%' . $this->search . '%';
@@ -21,7 +18,8 @@ class CmsInthenewsComponent extends Component
             return  DB::table('inthenews')
                         ->select('id', 'titleID', 'sourcename', 'is_active', 'publishdate')
                         ->where('titleID', 'like', $sc)
-                        ->orderBy($this->dataField, $this->dataOrder)
+                        // ->orderBy($this->dataField, $this->dataOrder)
+                        ->orderByDesc('publishdate')
                         ->paginate($this->paginate);
         } catch (\Throwable $th) {
             return [];

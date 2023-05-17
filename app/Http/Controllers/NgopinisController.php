@@ -29,6 +29,7 @@ class NgopinisController extends Controller
 
     public function ngopinis(){
         $title = 'Sawit - Posts';
-        return view('frontends.ngopinis', compact('title'));
+        $description = '';
+        return view('frontends.ngopinis', compact('title', 'description'));
     }
 }

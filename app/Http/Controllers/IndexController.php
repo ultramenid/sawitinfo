@@ -78,7 +78,8 @@ class IndexController extends Controller
         $ngopinis = $this->getNgopini();
         $reports = $this->getReports();
         $inthenews = $this->intheNews();
+        $description = '';
         $title = 'Sawit Info';
-        return view('frontends.index', compact('title', 'posts', 'ngopinis', 'reports', 'inthenews'));
+        return view('frontends.index', compact('title', 'posts', 'ngopinis', 'reports', 'inthenews', 'description'));
     }
 }
