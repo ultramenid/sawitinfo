@@ -25,16 +25,23 @@
             </button>
 
             <div class="mt-16 space-y-3">
-                <div class=" px-6">
-                    <a href="{{ route('about', app()->getlocale() )}}"  class="mb-4 px-4 inline-block  leading-5 text-white text-xl font-semibold ">{{__('about')}}<a>
+                <div class=" px-6" x-data="{open1: false}">
+                    <div class="flex items-center py-1   px-4 mb-2" @click=" open1 =! open1">
+                        <a class=" leading-5 text-white text-xl font-semibold ">about </a>
+                        <svg fill="currentColor" viewBox="0 0 20 20" :class="{'rotate-180': open1, 'rotate-0': !open1}" class="inline w-6 h-6 text-white items-center mt-1 ml-1 transition-transform duration-200 transform "><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                    </div>
+                    <div class="bg-white px-4 py-3 mb-4 flex flex-col space-y-2 rounded" x-show="open1" style="display: none !important;">
+                            <a href="#" class=" mr-6 text-auriga-biru">sawit.info</a>
+                            <a href="#" class=" mr-6 text-auriga-biru">who we are</a>
+                    </div>
                     <p class="border-b border-gray-300"></p>
                 </div>
                 <div class=" px-6">
-                    <a href="#"  class="mb-4 px-4 inline-block  leading-5 text-white text-xl font-semibold ">{{__('action')}}<a>
+                    <a href="#"  class="mb-4 px-4 inline-block  leading-5 text-white text-xl font-semibold ">action<a>
                     <p class="border-b border-gray-300"></p>
                 </div>
                 <div class=" px-6">
-                    <a href="#"  class="mb-4 px-4 inline-block  leading-5 text-white text-xl font-semibold ">{{__('story')}}<a>
+                    <a href="#"  class="mb-4 px-4 inline-block  leading-5 text-white text-xl font-semibold ">story<a>
                     <p class="border-b border-gray-300"></p>
                 </div>
                 <div class=" px-6" x-data="{open1: false}">

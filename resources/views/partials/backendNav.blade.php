@@ -41,9 +41,12 @@
             <div class="hover:bg-gray-200 dark:hover:bg-newgray-700 py-3 px-2 rounded @if($nav == 'reports' )border-b-2  dark:border-gray-300 border-newgray-900 @endif ">
                 <a href="{{url('/cms/reports')}}" class=" px-0.5  @if($nav == 'reports' )   text-newgray-900 dark:text-gray-300 @endif   hover:text-newgray-900 dark:hover:text-gray-300 cursor-pointer" >Reports</a>
             </div>
-            <div class="hover:bg-gray-200 dark:hover:bg-newgray-700 py-3 px-2 rounded @if($nav == 'inthenews' )border-b-2  dark:border-gray-300 border-newgray-900 @endif ">
-                <a href="{{url('/cms/inthenews')}}" class=" px-0.5  @if($nav == 'inthenews' )   text-newgray-900 dark:text-gray-300 @endif   hover:text-newgray-900 dark:hover:text-gray-300 cursor-pointer" >Inthenews</a>
+            <div class="hover:bg-gray-200 dark:hover:bg-newgray-700 py-3 px-2 rounded @if($nav == 'policyregulation' )border-b-2  dark:border-gray-300 border-newgray-900 @endif ">
+                <a href="{{url('/cms/policyregulation')}}" class=" px-0.5  @if($nav == 'policyregulation' )   text-newgray-900 dark:text-gray-300 @endif   hover:text-newgray-900 dark:hover:text-gray-300 cursor-pointer" >Policy & Regulation</a>
             </div>
+            {{-- <div class="hover:bg-gray-200 dark:hover:bg-newgray-700 py-3 px-2 rounded @if($nav == 'inthenews' )border-b-2  dark:border-gray-300 border-newgray-900 @endif ">
+                <a href="{{url('/cms/inthenews')}}" class=" px-0.5  @if($nav == 'inthenews' )   text-newgray-900 dark:text-gray-300 @endif   hover:text-newgray-900 dark:hover:text-gray-300 cursor-pointer" >Inthenews</a>
+            </div> --}}
 
 
 

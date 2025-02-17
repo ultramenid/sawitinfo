@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\DB;
 
 class ReportsController extends Controller
 {
@@ -24,4 +26,6 @@ class ReportsController extends Controller
         $nav = 'reports';
         return view('backends.editreports', compact('title', 'nav', 'id'));
     }
+
+
 }

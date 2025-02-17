@@ -12,10 +12,10 @@
     <div class="max-w-6xl mx-auto grid md:grid-cols-2 grid-cols-1 sm:py-8 gap-10 ">
         {{-- left side --}}
         <div class="w-full">
-            <img src="{{ asset('storage/files/photos/'.$posts[0]->img) }}" alt="sawit.info" class="w-full object-center h-80 object-cover sm:px-4 px-0 border border-gray-50">
+            <img src="{{ asset('storage/files/photos/'.$posts[0]->img) }}" alt="sawit.info" class="w-full object-center h-80 object-cover sm:px-4 px-0 ">
 
             <div class="text-gray-500 space-x-6 flex sm:mt-6 mt-2 px-4">
-                <h1 class="font-semibold md:text-3xl text-md">{{$posts[0]->category}}</h1>
+                {{-- <h1 class="font-semibold md:text-3xl text-md">{{$posts[0]->category}}</h1> --}}
                 <span class="font-semibold md:text-3xl text-md">•</span>
                 <h1 class="font-semibold md:text-3xl text-md">
                     @php
@@ -38,7 +38,7 @@
                     @if($key > 0)
                     <div class="py-2">
                         <div class="text-gray-500 space-x-4 flex  ">
-                        <h1 class="font-semibold text-sm">{{$data->category}}</h1>
+                        {{-- <h1 class="font-semibold text-sm">{{$data->category}}</h1> --}}
                             <span class="font-semibold text-sm">•</span>
                             <h1 class="font-semibold text-sm">
                                 @php
@@ -84,10 +84,8 @@
             <div class="sm:px-10">
                 <div class="flex space-x-4 sm:mt-10 mt-4 items-center text-gray-200">
                     <h1 class="font-semibold sm:text-base text-sm">ngopini</h1>
-                    <span class="font-semibold sm:text-base text-sm">•</span>
-                    <h1 class="font-semibold sm:text-base text-sm">sawit</h1>
                 </div>
-                <a href="{{ route('ngopini', [app()->getLocale(),  $ngopinis->slug]) }}">
+                <a href="{{ route('ngopini', [app()->getLocale(), $ngopinis->slug]) }}">
                     <h1 class="sm:mt-8 mt-5 sm:text-2xl text-xl font-bold text-white">
                         {{$ngopinis->title}}
                     </h1>
@@ -128,7 +126,7 @@
                     <div class="card md:px-12 bg-white py-6 grid">
                         <div class="card-header flex justify-center mx-4 -mt-24">
                             <img
-                                class="h-96 object-center object-cover"
+                                class="h-96 object-center object-cover w-72"
                                 src="{{ asset('storage/files/photos/'.$item->img) }}"
                                 alt="tailwind-card-image"
                             />
@@ -137,9 +135,11 @@
                             <div class="flex space-x-4 mt-6  items-center text-gray-500">
                                 <h1 class="font-semibold md:text-xl text-md">report</h1>
                             </div>
-                            <h1 class="mt-6 md:text-2xl text-xl font-bold  text-auriga-biru">
-                                {{$item->title}}
-                            </h1>
+                            <a href="{{ asset('storage/files/reports/'.$item->file) }}">
+                                <h1 class="mt-6 md:text-2xl text-xl font-bold  text-auriga-biru">
+                                    {{$item->title}}
+                                </h1>
+                            </a>
                             <div class="mt-6  text-auriga-biru">
                                 <a class="font-bold">
                                     @php

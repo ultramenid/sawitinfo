@@ -6,6 +6,7 @@ module.exports = {
         "./resources/**/*.blade.php",
         "./resources/**/*.js",
         "./resources/**/*.vue",
+        './vendor/masmerise/livewire-toaster/resources/views/*.blade.php',
       ],
       darkMode: 'class', // or 'media' or 'class'
   theme: {

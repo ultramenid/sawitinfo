@@ -19,9 +19,9 @@ class IndexController extends Controller
     }
     public function selectReports(){
         if (App::getLocale() == 'id') {
-            return 'id, titleID as title, slug, img, publishdate, descID as description';
+            return 'id, titleID as title, slug, img, publishdate, descID as description, fileID as file';
         }else{
-            return 'id, titleEN as title, slug, img, publishdate, descEN as description';
+            return 'id, titleEN as title, slug, img, publishdate, descEN as description, fileEN as file';
         }
     }
 
@@ -45,7 +45,7 @@ class IndexController extends Controller
     public function getPosts(){
         return DB::table('posts')
         ->selectRaw($this->selectPost())
-        ->whereIn('category', ['analysis', 'cases', 'expose'])
+        ->where('category', 'insight')
         ->where('publishdate', '<', Carbon::now('Asia/Jakarta'))
         ->where('is_active', 1)
         ->orderBy('publishdate','desc')
@@ -73,7 +73,7 @@ class IndexController extends Controller
         ->get();
     }
     public function index(){
-        // dd($this->intheNews());
+        // dd($this->getPosts());
         $posts = $this->getPosts();
         $ngopinis = $this->getNgopini();
         $reports = $this->getReports();

@@ -71,8 +71,9 @@
                     <label class="w-full"  >
                         <select wire:model='category' class=" mb-6 bg-gray-100 dark:bg-newgray-700 text-newgray-700 dark:text-gray-300 rounded w-full border  py-2 px-4 focus:outline-none border-gray-300 dark:border-opacity-20">
                             <option value="">Category</option>
-                            <option value="analysis">analysis</option>
+                            <option value="insight">insight</option>
                             <option value="ngopini">ngopini</option>
+                            <option value="event">event</option>
                         </select>
                     </label>
                 </div>
@@ -144,7 +145,7 @@
                                     file_picker_callback : function(callback, value, meta) {
                                         var x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth;
                                         var y = window.innerHeight|| document.documentElement.clientHeight|| document.getElementsByTagName('body')[0].clientHeight;
-                                        var cmsURL = '/cms/' + 'ed-filemanager?editor=' + meta.fieldname;
+                                        var cmsURL = '/cms/' + 'sawit-filemanager?editor=' + meta.fieldname;
                                         if (meta.filetype == 'image') {
                                             cmsURL = cmsURL + '&type=Images';
                                         } else {
@@ -215,7 +216,7 @@
                                     file_picker_callback : function(callback, value, meta) {
                                         var x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth;
                                         var y = window.innerHeight|| document.documentElement.clientHeight|| document.getElementsByTagName('body')[0].clientHeight;
-                                        var cmsURL = '/cms/' + 'ed-filemanager?editor=' + meta.fieldname;
+                                        var cmsURL = '/cms/' + 'sawit-filemanager?editor=' + meta.fieldname;
                                         if (meta.filetype == 'image') {
                                             cmsURL = cmsURL + '&type=Images';
                                         } else {

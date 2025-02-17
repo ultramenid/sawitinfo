@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class PostsController extends Controller
 {
     public function index(){
-        $title = 'Posts - Environmental Defender';
+        $title = 'Posts - Sawitinfo';
         $nav = 'posts';
         return view('backends.cmscases', compact('title','nav'));
     }
@@ -21,12 +21,12 @@ class PostsController extends Controller
     }
 
     public function add(){
-        $title = 'New posts - Environmental Defender';
+        $title = 'New posts - Sawitinfo';
         $nav = 'posts';
         return view('backends.addposts', compact('title','nav'));
     }
     public function edit($id){
-        $title = 'Edit posts - Environmental Defender';
+        $title = 'Edit posts - Sawitinfo';
         $nav = 'posts';
         $id = $id;
         return view('backends.editposts', compact('title','nav', 'id'));
@@ -43,6 +43,7 @@ class PostsController extends Controller
         return DB::table('posts')->selectRaw($this->selectData())->where('slug' , $slug)->first();
     }
     public function slug($lang ,$slug){
+        if(!$this->getdataSlug($slug)){return redirect('/');}
         $data = $this->getdataSlug($slug);
         $title = $data->title;
         $desc = $data->description;

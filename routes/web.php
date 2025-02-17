@@ -8,6 +8,7 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\InthenewsController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\NgopinisController;
+use App\Http\Controllers\PolicyRegulationController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\SettingsController;
@@ -37,6 +38,7 @@ Route::group(['prefix' => '{lang}'], function () {
     Route::get('/ngopini/{slug}', [NgopinisController::class, 'index'])->name('ngopini');
     Route::get('/posts', [PostsController::class, 'posts'])->name('posts');
     Route::get('/ngopini', [NgopinisController::class, 'ngopinis'])->name('ngopinis');
+    Route::get('/lis-reports', [ReportsController::class, 'reports'])->name('reports');
 
 });
 
@@ -55,6 +57,9 @@ Route::group(['middleware' => 'checkSession'], function () {
     Route::get('/cms/addreports', [ReportsController::class, 'addreports']);
     Route::get('/cms/news/{id}', [InthenewsController::class, 'edit']);
     Route::get('/cms/reports/{id}', [ReportsController::class, 'edit']);
+    Route::get('/cms/policyregulation', [PolicyRegulationController::class, 'index']);
+    Route::get('/cms/addpolicyregulation', [PolicyRegulationController::class, 'add']);
+    Route::get('/cms/policyregulation/{id}', [PolicyRegulationController::class, 'edit']);
 
     Route::group(['prefix' => '/cms/sawit-filemanager', 'middleware' => 'checkSession'], function () {
         \UniSharp\LaravelFilemanager\Lfm::routes();

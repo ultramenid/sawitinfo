@@ -9,6 +9,7 @@ use Livewire\Component;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Drivers\Imagick\Driver;
 
 class EditPostsComponent extends Component
 {
@@ -41,52 +42,16 @@ class EditPostsComponent extends Component
     public function getTags(){
         return implode(',', $this->tags);
     }
-
-    public function storePosts(){
-        if($this->manualValidation()){
-            if(!$this->photo){
-                $name = $this->uphoto;
-            }else{
-                    Storage::delete('public/files/photos/'.$this->uphoto);
-                    Storage::delete('public/files/photos/thumbnail/'.$this->uphoto);
-                     $name=  $this->uploadImage();
-
-
-            }
-            DB::table('posts')
-            ->where('id', $this->idpost)
-            ->update([
-                'publishdate' => $this->publishdate,
-                    'img' => $name,
-                    'tags' => $this->getTags(),
-                    'descEN' => $this->descEN,
-                    'descID' => $this->descID,
-                    'titleEN' => $this->titleEN,
-                    'titleID' => $this->titleID,
-                    'is_active' => $this->isactive,
-                    'contentID' => $this->contentID,
-                    'contentEN' => $this->contentEN,
-                    'category' => $this->category,
-                    'slug' => Str::slug($this->titleID,'-'),
-                    'updated_at' => Carbon::now('Asia/Jakarta')
-            ]);
-
-            //passing to toast
-            $message = 'Successfully updating posts';
-            $type = 'success'; //error, success
-            $this->emit('toast',$message, $type);
-
-        }
-    }
     public function uploadImage(){
         $file = $this->photo->store('public/files/photos');
         $foto = $this->photo->hashName();
 
-        $manager = new ImageManager();
+        $manager = new ImageManager(new Driver);
 
         // https://image.intervention.io/v2/api/fit
-        $image = $manager->make('storage/files/photos/'.$foto)->fit(300, 150);
+        $image = $manager->read('storage/files/photos/'.$foto)->cover(300, 150);
         $image->save('storage/files/photos/thumbnail/'.$foto);
+        // dd($foto);
         return $foto;
     }
 
@@ -100,6 +65,48 @@ class EditPostsComponent extends Component
         }
 
     }
+
+    public function storePosts(){
+
+            if($this->manualValidation()){
+                if(!$this->photo){
+                    $name = $this->uphoto;
+                }else{
+
+                        Storage::delete('public/files/photos/'.$this->uphoto);
+                        Storage::delete('public/files/photos/thumbnail/'.$this->uphoto);
+                         $name=  $this->uploadImage();
+
+
+                }
+                DB::table('posts')
+                ->where('id', $this->idpost)
+                ->update([
+                    'publishdate' => $this->publishdate,
+                        'img' => $name,
+                        'tags' => $this->getTags(),
+                        'descEN' => $this->descEN,
+                        'descID' => $this->descID,
+                        'titleEN' => $this->titleEN,
+                        'titleID' => $this->titleID,
+                        'is_active' => $this->isactive,
+                        'contentID' => $this->contentID,
+                        'contentEN' => $this->contentEN,
+                        'category' => $this->category,
+                        'slug' => Str::slug($this->titleID,'-'),
+                        'updated_at' => Carbon::now('Asia/Jakarta')
+                ]);
+
+                //passing to toast
+                $message = 'Successfully updating posts';
+                $type = 'success'; //error, success
+                $this->emit('toast',$message, $type);
+
+            }
+
+
+    }
+
     public function render()
     {
         return view('livewire.edit-posts-component');

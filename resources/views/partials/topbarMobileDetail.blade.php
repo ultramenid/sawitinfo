@@ -26,15 +26,15 @@
 
             <div class="mt-16 space-y-3">
                 <div class=" px-6">
-                    <a href="{{ route('about', app()->getlocale() )}}"  class="mb-4 px-4 inline-block  leading-5 text-white text-xl font-semibold ">{{__('about')}}<a>
+                    <a href="{{ route('about', app()->getlocale() )}}"  class="mb-4 px-4 inline-block  leading-5 text-white text-xl font-semibold ">about<a>
                     <p class="border-b border-gray-300"></p>
                 </div>
                 <div class=" px-6">
-                    <a href="#"  class="mb-4 px-4 inline-block  leading-5 text-white text-xl font-semibold ">{{__('action')}}<a>
+                    <a href="#"  class="mb-4 px-4 inline-block  leading-5 text-white text-xl font-semibold ">action<a>
                     <p class="border-b border-gray-300"></p>
                 </div>
                 <div class=" px-6">
-                    <a href="#"  class="mb-4 px-4 inline-block  leading-5 text-white text-xl font-semibold ">{{__('story')}}<a>
+                    <a href="#"  class="mb-4 px-4 inline-block  leading-5 text-white text-xl font-semibold ">story<a>
                     <p class="border-b border-gray-300"></p>
                 </div>
                 <div class=" px-6" x-data="{open1: false}">

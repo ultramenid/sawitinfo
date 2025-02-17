@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Illuminate\Support\Str;
+use Intervention\Image\Drivers\Imagick\Driver;
 use Intervention\Image\ImageManager;
 use Livewire\WithFileUploads;
 
@@ -25,8 +26,6 @@ class EditReportsComponent extends Component
         $this->titleEN = $data->titleEN;
         $this->descID = $data->descID;
         $this->descEN = $data->descEN;
-        $this->fileID = $data->fileID;
-        $this->fileEN = $data->fileEN;
         $this->filenameID = $data->fileID;
         $this->filenameEN = $data->fileEN;
         $this->uphoto = $data->img;
@@ -46,11 +45,12 @@ class EditReportsComponent extends Component
         $file = $this->photo->store('public/files/photos');
         $foto = $this->photo->hashName();
 
-        $manager = new ImageManager();
+        $manager = new ImageManager(new Driver);
 
         // https://image.intervention.io/v2/api/fit
-        $image = $manager->make('storage/files/photos/'.$foto)->fit(300, 150);
+        $image = $manager->read('storage/files/photos/'.$foto)->cover(300, 150);
         $image->save('storage/files/photos/thumbnail/'.$foto);
+        // dd($foto);
         return $foto;
     }
 
@@ -61,20 +61,11 @@ class EditReportsComponent extends Component
         $this->filenameEN = $this->fileEN->getClientOriginalName();
      }
     public function uploadReports(){
-            if($this->fileID and $this->fileEN){
-                $name1 = $this->fileID;
-                $name2 = $this->fileEN;
-
-                return [$name1, $name2];
-            }else{
-            $file1 = $this->fileID->store('public/files/reports');
-            $file2 = $this->fileEN->store('public/files/reports');
-            $name1 = $this->fileID->getClientOriginalName();
-            $name2 = $this->fileEN->getClientOriginalName();
-
-            return [$name1, $name2];
-        }
-
+        $name1 = Carbon::now('Asia/Jakarta').'-'.$this->fileID->getClientOriginalName();
+        $name2 = Carbon::now('Asia/Jakarta').'-'.$this->fileEN->getClientOriginalName();
+        $file1 = $this->fileID->storeAs('public/files/reports', $name1);
+        $file2 = $this->fileEN->storeAs('public/files/reports', $name2);
+        return [$name1, $name2];
     }
 
 
@@ -92,6 +83,20 @@ class EditReportsComponent extends Component
 
 
             }
+            if(!$this->fileID){
+                // dd($this->filenameID);
+                $name1 = $this->filenameID;
+            }else{
+                Storage::delete('public/files/reports/'.$this->filenameID);
+                $name1 = $this->uploadReports()[0];
+            }
+            if(!$this->fileEN){
+                // dd($this->filenameEN);
+                $name2 = $this->filenameEN;
+            }else{
+                Storage::delete('public/files/reports/'.$this->filenameEN);
+                $name2 = $this->uploadReports()[1];
+            }
             DB::table('reports')
             ->where('id', $this->idReports)
             ->update([
@@ -102,8 +107,8 @@ class EditReportsComponent extends Component
                     'descID' => $this->descID,
                     'titleEN' => $this->titleEN,
                     'titleID' => $this->titleID,
-                    'fileID' => $this->uploadReports()[0],
-                    'fileEN' => $this->uploadReports()[1],
+                    'fileID' => $name1,
+                    'fileEN' => $name2,
                     'is_active' => $this->isactive,
                     'slug' => Str::slug($this->titleID,'-'),
                     'updated_at' => Carbon::now('Asia/Jakarta')
@@ -127,16 +132,6 @@ class EditReportsComponent extends Component
             return;
         }elseif($this->tags == []){
             $message = 'Tags is required';
-            $type = 'error'; //error, success
-            $this->emit('toast',$message, $type);
-            return;
-        }elseif($this->fileID == ''){
-            $message = 'File is required';
-            $type = 'error'; //error, success
-            $this->emit('toast',$message, $type);
-            return;
-        }elseif($this->fileEN == ''){
-            $message = 'File is required';
             $type = 'error'; //error, success
             $this->emit('toast',$message, $type);
             return;

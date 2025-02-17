@@ -8,7 +8,7 @@ use Intervention\Image\ImageManager;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Str;
-
+use Intervention\Image\Drivers\Imagick\Driver;
 
 class AddPostsComponent extends Component
 {
@@ -42,11 +42,12 @@ class AddPostsComponent extends Component
         $file = $this->photo->store('public/files/photos');
         $foto = $this->photo->hashName();
 
-        $manager = new ImageManager();
+        $manager = new ImageManager(new Driver);
 
         // https://image.intervention.io/v2/api/fit
-        $image = $manager->make('storage/files/photos/'.$foto)->fit(300, 150);
+        $image = $manager->read('storage/files/photos/'.$foto)->cover(300, 150);
         $image->save('storage/files/photos/thumbnail/'.$foto);
+        // dd($foto);
         return $foto;
     }
 
