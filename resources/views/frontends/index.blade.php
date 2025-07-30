@@ -25,8 +25,8 @@
                     @endphp</h1>
             </div>
 
-            <a href="{{ route('slug', [app()->getLocale(),  $posts[0]->slug]) }}"><h1  class="px-4 sm:mt-6 mt-2 sm:mb-8 mb-3 md:text-5xl text-2xl font-semibold text-auriga-biru">{{$posts[0]->title}}</h1></a>
-            <a href="{{ route('slug', [app()->getLocale(),  $posts[0]->slug]) }}" class="px-4 text-auriga-biru sm:text-xl text-base font-semibold hover:cursor-pointer hover:underline ">READ THE ARTICLE</a>
+            <a href="{{ route('slug', [app()->getLocale(),  $posts[0]->slug]) }}"><h1  class="cusrsor-pointer px-4 sm:mt-6 mt-2 sm:mb-8 mb-3 md:text-5xl text-2xl font-semibold text-auriga-biru">{{$posts[0]->title}}</h1></a>
+            <a href="{{ route('slug', [app()->getLocale(),  $posts[0]->slug]) }}" class=" cursor-pointer px-4 text-auriga-biru sm:text-xl text-base font-semibold hover:cursor-pointer hover:underline ">READ THE ARTICLE</a>
         </div>
 
         {{-- right side --}}
@@ -51,10 +51,10 @@
                         </div>
                         <div class="flex  w-full justify-between mt-1 space-x-6  ">
                             <img src="{{ asset('storage/files/photos/thumbnail/'.$data->img) }}" alt="sawit.info" class="md:w-5/12 w-6/12 sm:h-28 h-24 object-cover border border-gray-50">
-                            <a href="{{ route('slug', [app()->getLocale(),  $data->slug]) }}" class="text-auriga-biru sm:text-xl text-base font-bold">{{$posts[1]->title}}</a>
+                            <a href="{{ route('slug', [app()->getLocale(),  $data->slug]) }}" class="cursor-pointer text-auriga-biru sm:text-xl text-base font-bold">{{$posts[1]->title}}</a>
                         </div>
                         <div class="flex justify-end mt-4">
-                            <a href="{{ route('slug', [app()->getLocale(),  $data->slug]) }}" class="text-auriga-biru font-bold sm:text-base text-sm">READ THE ARTICLE</a>
+                            <a href="{{ route('slug', [app()->getLocale(),  $data->slug]) }}" class="cursor-pointer text-auriga-biru font-bold sm:text-base text-sm">READ THE ARTICLE</a>
                         </div>
                     </div>
                     @endif
@@ -64,9 +64,9 @@
     </div>
 
     <div class="max-w-6xl mx-auto bg-auriga-biru flex w-full justify-between px-6 py-4">
-        <a href="{{ route('posts', app()->getlocale() )}}" class="text-white font-semibold">VIEW ALL ARTICLES</a>
+        <a href="{{ route('posts', app()->getlocale() )}}" class=" cursor-pointer text-white font-semibold">VIEW ALL ARTICLES</a>
 
-        <a href="{{ route('posts', app()->getlocale() )}}">
+        <a href="{{ route('posts', app()->getlocale() )}}" class="cursor-pointer">
             <div class="rounded-full  border-white border md:flex justify-center items-center px-1 py-1 ">
             <svg xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 font-bold text-white">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
